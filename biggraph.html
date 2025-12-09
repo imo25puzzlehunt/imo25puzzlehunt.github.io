@@ -1,0 +1,269 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    
+<title>Big Graph</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="IMO 2025 Puzzle Hunt">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="static/css/skeleton.f3406388ee80.css">
+    <link rel="stylesheet" href="static/css/base.2e73f19f3835.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="static/js/jsi18n.js"></script>
+    <script src="static/js/jquery.formset.8584349c8b78.js"></script>
+    <script src="static/js/sorttable.cc47c001d30b.js"></script>
+    <script src="static/js/tray.e0fbe1fa0768.js"></script>
+    <script src="static/js/notify.7898a6be1e40.js"></script>
+    <script src="static/js/time.e16f93f2f0b2.js"></script>
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="static/images/fav-logo.5858f2e05ff7.ico" type="image/vnd.microsoft.icon">
+    
+</head>
+<body>
+    <a class="skip-to-main">Press enter to skip to main content.</a>
+    <nav class="top-navbar">
+        <span class="tray">
+            <div class="top-tabs">
+                <div class="top-team-actions">
+                    
+                </div>
+                <div class="site-nav">
+                    <a href="index.html">
+                        Home
+                    </a>
+                    <a href="instructions.html">
+                        Instructions
+                    </a>
+                    
+                    
+                    <a href="puzzles.html">
+                        Puzzles
+                    </a>
+                    
+                    <a href="teams.html">
+                        Teams
+                    </a>
+                    
+                    <a href="wrapup.html">
+                        Wrap-Up
+                    </a>
+                    
+                </div>
+            </div>
+        </span>
+    </nav>
+    <script>
+    
+    </script>
+    
+    <div class="top-more-actions">
+        
+<a href="stats.html" class="btn">Hunt Stats</a>
+<a href="finishers.html" class="btn">Finishers</a>
+
+    </div>
+    <div class="content">
+        
+<style>
+.tooltip-colored-circle {
+  /* echarts:util/format.ts */
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+}
+</style>
+<div id="biggraph" style="min-height: 400px;"></div>
+
+<!-- heavily inspired by CTFd (via paradox puzzlehunt) -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.min.js" integrity="sha256-Yhe8c0oOs2dPYVQKLAi1aBB9uhr7yMmh67ukoWBqDuU=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+echarts.init(document.getElementById('biggraph')).setOption({
+  title: {
+    left: "center",
+    textStyle: { color: "white" },
+    text: "Top 30 Teams",
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "cross"
+    }
+  },
+  legend: {
+    type: "scroll",
+    orient: "horizontal",
+    align: "left",
+    bottom: 35,
+    textStyle: { color: "white", overflow: "truncate", width: 70 },
+    pageTextStyle: { color: "white" },
+    data: [
+      
+        "USA5",
+      
+        "UNK4",
+      
+        "POR4",
+      
+        "JPN4",
+      
+        "SVK6",
+      
+        "EST4",
+      
+        "SUI6",
+      
+        "BRA6",
+      
+        "FIN2",
+      
+        "IND6",
+      
+        "KOR4",
+      
+        "MAS4",
+      
+        "MNE6",
+      
+        "SVN3",
+      
+        "SWE5",
+      
+        "POL3",
+      
+        "TWN3",
+      
+        "ROU6",
+      
+        "POR3",
+      
+        "CHN3",
+      
+        "IND5",
+      
+        "CRI2",
+      
+        "NLD4",
+      
+        "SGP1",
+      
+        "GEO5",
+      
+        "LTU3",
+      
+        "BIH2",
+      
+        "PHI4",
+      
+        "MEX3",
+      
+        "IDN1",
+      
+    ],
+  },
+  toolbox: {
+    feature: {
+      dataZoom: {
+        yAxisIndex: "none"
+      },
+      saveAsImage: {}
+    }
+  },
+  grid: {
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "time",
+      boundaryGap: false,
+      data: []
+    }
+  ],
+  yAxis: [
+    {
+      type: "value"
+    }
+  ],
+  dataZoom: [
+    {
+      id: "dataZoomX",
+      type: "slider",
+      xAxisIndex: [0],
+      filterMode: "filter",
+      height: 20,
+      top: 35,
+      fillerColor: "rgba(233, 236, 241, 0.4)"
+    }
+  ],
+  tooltip: {
+    formatter: function(params) {
+      var teamName = params.seriesName;
+
+      var date = params.data[0];
+      var score = params.data[1];
+      var info = params.data[2];
+
+      // team name and color;
+      var div1 = document.createElement('div');
+      var span = document.createElement('span');
+      span.className = 'tooltip-colored-circle';
+      span.style.backgroundColor = params.color;
+      div1.appendChild(span);
+      div1.appendChild(document.createTextNode(teamName));
+
+      var div2 = document.createElement('div');
+      var sl = document.createElement('small');
+      sl.textContent = 'Solved: '
+      div2.appendChild(sl);
+      div2.appendChild(document.createTextNode(info));
+      var ns = document.createElement('strong');
+      ns.textContent = ' → ' + score;
+      div2.appendChild(ns);
+
+      var div3 = document.createElement('div');
+      div3.textContent = date.toLocaleString();
+
+      var div = document.createElement('div');
+      div.appendChild(div1);
+      div.appendChild(div2);
+      div.appendChild(div3);
+      return div.outerHTML;
+    },
+  },
+  series: [
+    { name: "USA5", type: "line", itemStyle: { normal: { color: "hsl(106, 78%, 49%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752652991711.168), 1, 'Decomposition', 0], [new Date(1752654084207.75), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752655202432.7158), 3, 'Koala Kings', 0], [new Date(1752655664742.479), 4, 'Tri\u002DAlphametic', 0], [new Date(1752655761826.365), 5, 'Circular Reasoning', 0], [new Date(1752656390486.725), 6, 'My Windmill Has A Pencil', 0], [new Date(1752657607474.367), 7, 'Animation', 1], ], }, { name: "UNK4", type: "line", itemStyle: { normal: { color: "hsl(290, 90%, 56%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752657792502.624), 1, 'Decomposition', 0], [new Date(1752657806262.651), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752657824710.916), 3, 'Tri\u002DAlphametic', 0], [new Date(1752657837718.597), 4, 'My Windmill Has A Pencil', 0], [new Date(1752657848227.7998), 5, 'Circular Reasoning', 0], [new Date(1752657861517.261), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752658445079.291), 7, 'Koala Kings', 0], [new Date(1752658935244.2778), 8, 'Animation', 1], ], }, { name: "POR4", type: "line", itemStyle: { normal: { color: "hsl(113, 88%, 42%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752653364107.975), 1, 'Decomposition', 0], [new Date(1752653395393.0918), 2, 'Circular Reasoning', 0], [new Date(1752654523556.101), 3, 'Tri\u002DAlphametic', 0], [new Date(1752654867865.4202), 4, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752656277822.678), 5, 'Koala Kings', 0], [new Date(1752657388940.6099), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752657632871.731), 7, 'My Windmill Has A Pencil', 0], [new Date(1752661273888.864), 8, 'Animation', 1], ], }, { name: "JPN4", type: "line", itemStyle: { normal: { color: "hsl(44, 84%, 49%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752662051536.731), 1, 'Decomposition', 0], [new Date(1752662078817.776), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752662102530.155), 3, 'Tri\u002DAlphametic', 0], [new Date(1752662123932.51), 4, 'My Windmill Has A Pencil', 0], [new Date(1752662174492.551), 5, 'Circular Reasoning', 0], [new Date(1752662204918.594), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752662226652.246), 7, 'Koala Kings', 0], [new Date(1752662269996.8801), 8, 'Animation', 1], ], }, { name: "SVK6", type: "line", itemStyle: { normal: { color: "hsl(238, 86%, 53%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752660291057.559), 1, 'Circular Reasoning', 0], [new Date(1752660503062.9312), 2, 'Koala Kings', 0], [new Date(1752660784370.856), 3, 'Decomposition', 0], [new Date(1752661172640.6719), 4, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752661231046.7551), 5, 'Venn\u002Dary Encoding', 0], [new Date(1752661484326.176), 6, 'Tri\u002DAlphametic', 0], [new Date(1752662651329.9429), 7, 'My Windmill Has A Pencil', 0], [new Date(1752662821134.6282), 8, 'Animation', 1], ], }, { name: "EST4", type: "line", itemStyle: { normal: { color: "hsl(318, 87%, 45%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752651178121.4148), 1, 'Decomposition', 0], [new Date(1752653682480.1409), 2, 'Koala Kings', 0], [new Date(1752654417267.221), 3, 'Tri\u002DAlphametic', 0], [new Date(1752657509316.216), 4, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752657705923.2932), 5, 'Circular Reasoning', 0], [new Date(1752659306951.981), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752660000921.8682), 7, 'My Windmill Has A Pencil', 0], [new Date(1752663362588.542), 8, 'Animation', 1], ], }, { name: "SUI6", type: "line", itemStyle: { normal: { color: "hsl(295, 98%, 56%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752663104992.9668), 1, 'Decomposition', 0], [new Date(1752663137517.626), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752663167057.432), 3, 'Tri\u002DAlphametic', 0], [new Date(1752663181797.249), 4, 'My Windmill Has A Pencil', 0], [new Date(1752663201057.014), 5, 'Circular Reasoning', 0], [new Date(1752663255594.851), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752663279623.037), 7, 'Koala Kings', 0], [new Date(1752666940731.67), 8, 'Animation', 1], ], }, { name: "BRA6", type: "line", itemStyle: { normal: { color: "hsl(117, 85%, 58%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752663977027.8152), 1, 'Decomposition', 0], [new Date(1752664006784.968), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752664027423.051), 3, 'Tri\u002DAlphametic', 0], [new Date(1752664051226.0151), 4, 'My Windmill Has A Pencil', 0], [new Date(1752664069298.6392), 5, 'Koala Kings', 0], [new Date(1752664084165.913), 6, 'Circular Reasoning', 0], [new Date(1752666899409.637), 7, 'Venn\u002Dary Encoding', 0], [new Date(1752668576272.084), 8, 'Animation', 1], ], }, { name: "FIN2", type: "line", itemStyle: { normal: { color: "hsl(151, 93%, 50%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752658828901.1372), 1, 'Decomposition', 0], [new Date(1752659580075.694), 2, 'Circular Reasoning', 0], [new Date(1752660566918.687), 3, 'My Windmill Has A Pencil', 0], [new Date(1752660767718.3508), 4, 'Tri\u002DAlphametic', 0], [new Date(1752661332057.311), 5, 'Koala Kings', 0], [new Date(1752663035261.485), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752664076129.1821), 7, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752672633130.89), 8, 'Animation', 1], ], }, { name: "IND6", type: "line", itemStyle: { normal: { color: "hsl(63, 79%, 43%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752668756824.2742), 1, 'Decomposition', 0], [new Date(1752669815810.407), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752669973102.4548), 3, 'Circular Reasoning', 0], [new Date(1752670232277.078), 4, 'Koala Kings', 0], [new Date(1752671113338.333), 5, 'Tri\u002DAlphametic', 0], [new Date(1752671836017.7122), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752672368523.897), 7, 'My Windmill Has A Pencil', 0], [new Date(1752672714071.6382), 8, 'Animation', 1], ], }, { name: "KOR4", type: "line", itemStyle: { normal: { color: "hsl(198, 81%, 47%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752658646948.053), 1, 'Decomposition', 0], [new Date(1752659826028.6401), 2, 'Circular Reasoning', 0], [new Date(1752663465859.233), 3, 'Venn\u002Dary Encoding', 0], [new Date(1752664966428.7441), 4, 'Tri\u002DAlphametic', 0], [new Date(1752666142270.3071), 5, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752670259291.6702), 6, 'Koala Kings', 0], [new Date(1752678862213.5662), 7, 'Animation', 1], [new Date(1752679614447.9438), 8, 'My Windmill Has A Pencil', 0], ], }, { name: "MAS4", type: "line", itemStyle: { normal: { color: "hsl(277, 79%, 55%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752651834889.139), 1, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752652140278.892), 2, 'Decomposition', 0], [new Date(1752652146027.9219), 3, 'Circular Reasoning', 0], [new Date(1752652460786.0159), 4, 'Tri\u002DAlphametic', 0], [new Date(1752652613181.353), 5, 'My Windmill Has A Pencil', 0], [new Date(1752653751025.743), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752655842187.1792), 7, 'Koala Kings', 0], [new Date(1752700349628.719), 8, 'Animation', 1], ], }, { name: "MNE6", type: "line", itemStyle: { normal: { color: "hsl(98, 88%, 51%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752654665830.051), 1, 'Decomposition', 0], [new Date(1752657186735.868), 2, 'Tri\u002DAlphametic', 0], [new Date(1752659562208.599), 3, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752708912354.131), 4, 'Circular Reasoning', 0], [new Date(1752710942054.186), 5, 'Venn\u002Dary Encoding', 0], [new Date(1752742080512.827), 6, 'My Windmill Has A Pencil', 0], [new Date(1752772231340.087), 7, 'Koala Kings', 0], [new Date(1752842020454.113), 8, 'Animation', 1], ], }, { name: "SVN3", type: "line", itemStyle: { normal: { color: "hsl(328, 84%, 48%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752656004940.449), 1, 'Circular Reasoning', 0], [new Date(1752657554670.123), 2, 'Tri\u002DAlphametic', 0], [new Date(1752658091875.821), 3, 'Koala Kings', 0], [new Date(1752659433437.966), 4, 'Decomposition', 0], [new Date(1752659717206.096), 5, 'My Windmill Has A Pencil', 0], [new Date(1752661629324.648), 6, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752661887710.14), 7, 'Venn\u002Dary Encoding', 0], ], }, { name: "SWE5", type: "line", itemStyle: { normal: { color: "hsl(292, 78%, 48%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752661904923.2932), 1, 'Decomposition', 0], [new Date(1752661928353.569), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752661956871.181), 3, 'Tri\u002DAlphametic', 0], [new Date(1752661976228.225), 4, 'My Windmill Has A Pencil', 0], [new Date(1752661997761.399), 5, 'Circular Reasoning', 0], [new Date(1752662057401.284), 6, 'Koala Kings', 0], [new Date(1752663516302.704), 7, 'Venn\u002Dary Encoding', 0], ], }, { name: "POL3", type: "line", itemStyle: { normal: { color: "hsl(286, 85%, 45%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752671594338.4558), 1, 'Decomposition', 0], [new Date(1752671658267.25), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752671781143.055), 3, 'Tri\u002DAlphametic', 0], [new Date(1752671826294.385), 4, 'My Windmill Has A Pencil', 0], [new Date(1752671856211.909), 5, 'Circular Reasoning', 0], [new Date(1752671888326.008), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752671920890.265), 7, 'Koala Kings', 0], ], }, { name: "TWN3", type: "line", itemStyle: { normal: { color: "hsl(120, 85%, 58%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752650852712.928), 1, 'Decomposition', 0], [new Date(1752652636637.837), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752653678738.765), 3, 'Tri\u002DAlphametic', 0], [new Date(1752654324290.875), 4, 'My Windmill Has A Pencil', 0], [new Date(1752654508885.852), 5, 'Circular Reasoning', 0], [new Date(1752656927411.1072), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752674803248.383), 7, 'Koala Kings', 0], ], }, { name: "ROU6", type: "line", itemStyle: { normal: { color: "hsl(30, 80%, 59%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752658382375.691), 1, 'Decomposition', 0], [new Date(1752662337248.01), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752665781079.272), 3, 'Tri\u002DAlphametic', 0], [new Date(1752666030061.585), 4, 'Circular Reasoning', 0], [new Date(1752669601132.334), 5, 'Koala Kings', 0], [new Date(1752671096802.598), 6, 'My Windmill Has A Pencil', 0], [new Date(1752675741786.637), 7, 'Venn\u002Dary Encoding', 0], ], }, { name: "POR3", type: "line", itemStyle: { normal: { color: "hsl(112, 87%, 41%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752667543219.534), 1, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752671117301.6802), 2, 'Tri\u002DAlphametic', 0], [new Date(1752672801622.289), 3, 'Decomposition', 0], [new Date(1752674636553.273), 4, 'Circular Reasoning', 0], [new Date(1752676889993.864), 5, 'Venn\u002Dary Encoding', 0], [new Date(1752679062202.28), 6, 'Koala Kings', 0], [new Date(1752682734544.9941), 7, 'My Windmill Has A Pencil', 0], [new Date(1752908705917.3591), 8, 'Animation', 1], ], }, { name: "CHN3", type: "line", itemStyle: { normal: { color: "hsl(178, 81%, 43%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752706379248.863), 1, 'Decomposition', 0], [new Date(1752707102815.956), 2, 'Circular Reasoning', 0], [new Date(1752707664703.5042), 3, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752708497281.77), 4, 'Tri\u002DAlphametic', 0], [new Date(1752709402902.323), 5, 'Venn\u002Dary Encoding', 0], [new Date(1752732120377.9321), 6, 'Koala Kings', 0], [new Date(1752733341837.99), 7, 'My Windmill Has A Pencil', 0], ], }, { name: "IND5", type: "line", itemStyle: { normal: { color: "hsl(62, 78%, 42%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752659532337.645), 1, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752660783117.075), 2, 'Circular Reasoning', 0], [new Date(1752660817402.7668), 3, 'Tri\u002DAlphametic', 0], [new Date(1752669133600.781), 4, 'Decomposition', 0], [new Date(1752671519415.2542), 5, 'Koala Kings', 0], [new Date(1752673135893.574), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752737040267.131), 7, 'My Windmill Has A Pencil', 0], ], }, { name: "CRI2", type: "line", itemStyle: { normal: { color: "hsl(272, 82%, 54%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752790163568.964), 1, 'Decomposition', 0], [new Date(1752790191290.981), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752790211747.556), 3, 'Tri\u002DAlphametic', 0], [new Date(1752790238588.362), 4, 'Circular Reasoning', 0], [new Date(1752790266387.2458), 5, 'Venn\u002Dary Encoding', 0], [new Date(1752790289603.181), 6, 'Koala Kings', 0], [new Date(1752793085418.107), 7, 'My Windmill Has A Pencil', 0], ], }, { name: "NLD4", type: "line", itemStyle: { normal: { color: "hsl(214, 94%, 52%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752660636263.7178), 1, 'Decomposition', 0], [new Date(1752660679302.788), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752660759967.456), 3, 'Tri\u002DAlphametic', 0], [new Date(1752660814339.287), 4, 'Circular Reasoning', 0], [new Date(1752660900705.5818), 5, 'Venn\u002Dary Encoding', 0], [new Date(1752660946517.105), 6, 'Koala Kings', 0], ], }, { name: "SGP1", type: "line", itemStyle: { normal: { color: "hsl(13, 81%, 57%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752658990146.566), 1, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752659005812.221), 2, 'Circular Reasoning', 0], [new Date(1752659199254.445), 3, 'My Windmill Has A Pencil', 0], [new Date(1752659373543.763), 4, 'Tri\u002DAlphametic', 0], [new Date(1752663589159.642), 5, 'Decomposition', 0], [new Date(1752664893724.144), 6, 'Koala Kings', 0], ], }, { name: "GEO5", type: "line", itemStyle: { normal: { color: "hsl(212, 84%, 58%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752651978160.217), 1, 'My Windmill Has A Pencil', 0], [new Date(1752652408277.28), 2, 'Circular Reasoning', 0], [new Date(1752660846652.214), 3, 'Decomposition', 0], [new Date(1752662493888.727), 4, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752663414870.915), 5, 'Tri\u002DAlphametic', 0], [new Date(1752667121613.106), 6, 'Koala Kings', 0], ], }, { name: "LTU3", type: "line", itemStyle: { normal: { color: "hsl(326, 85%, 41%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752653970134.489), 1, 'Decomposition', 0], [new Date(1752656571228.064), 2, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752658570208.7542), 3, 'Tri\u002DAlphametic', 0], [new Date(1752659658345.371), 4, 'My Windmill Has A Pencil', 0], [new Date(1752664570749.0999), 5, 'Circular Reasoning', 0], [new Date(1752668850213.188), 6, 'Venn\u002Dary Encoding', 0], ], }, { name: "BIH2", type: "line", itemStyle: { normal: { color: "hsl(321, 90%, 58%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752655855231.548), 1, 'Decomposition', 0], [new Date(1752661239234.562), 2, 'Tri\u002DAlphametic', 0], [new Date(1752672861663.2222), 3, 'Circular Reasoning', 0], [new Date(1752674147463.312), 4, 'Venn\u002Dary Encoding', 0], [new Date(1752674269045.428), 5, 'My Windmill Has A Pencil', 0], [new Date(1752675623394.381), 6, 'Sudok\u002DIMO: A Unique Performance', 0], ], }, { name: "PHI4", type: "line", itemStyle: { normal: { color: "hsl(307, 97%, 47%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752651232117.136), 1, 'Circular Reasoning', 0], [new Date(1752656634316.509), 2, 'My Windmill Has A Pencil', 0], [new Date(1752662185063.0132), 3, 'Decomposition', 0], [new Date(1752666117636.667), 4, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752708698562.8928), 5, 'Tri\u002DAlphametic', 0], [new Date(1752710478692.7349), 6, 'Venn\u002Dary Encoding', 0], ], }, { name: "MEX3", type: "line", itemStyle: { normal: { color: "hsl(315, 98%, 44%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752673556100.407), 1, 'Circular Reasoning', 0], [new Date(1752673633056.264), 2, 'My Windmill Has A Pencil', 0], [new Date(1752675657699.6929), 3, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752676048857.438), 4, 'Decomposition', 0], [new Date(1752677880881.74), 5, 'Tri\u002DAlphametic', 0], ], }, { name: "IDN1", type: "line", itemStyle: { normal: { color: "hsl(118, 89%, 48%)", } }, symbolSize: function(data) { return data[3] ? 10 : 4; }, data: [ [new Date(1752667560414.603), 1, 'Sudok\u002DIMO: A Unique Performance', 0], [new Date(1752667597400.892), 2, 'Circular Reasoning', 0], [new Date(1752670085346.969), 3, 'My Windmill Has A Pencil', 0], [new Date(1752670105956.799), 4, 'Decomposition', 0], [new Date(1752796296883.576), 5, 'Tri\u002DAlphametic', 0], [new Date(1752851930824.586), 6, 'Venn\u002Dary Encoding', 0], [new Date(1752851950855.114), 7, 'Koala Kings', 0], ], },
+  ],
+});
+</script>
+
+    </div>
+    
+    <script>
+        const skipToMainLink = document.querySelector("a.skip-to-main");
+        const mainContentElement = document.getElementsByTagName("main")?.item(0) || document.querySelector("div.content");
+        if (skipToMainLink && mainContentElement) {
+            const mainContentAnchor = document.createElement("a");
+            const anchorId = "main-content-anchor"
+            mainContentAnchor.className = anchorId;
+            mainContentAnchor.id = anchorId;
+            skipToMainLink.href = `#${anchorId}`;
+            mainContentElement.parentNode.insertBefore(mainContentAnchor, mainContentElement);
+        }
+    </script>
+    <footer>
+        Powered by <a href="https://github.com/galacticpuzzlehunt/gph-site">gph-site</a>
+    </footer>
+</body>
+</html>
