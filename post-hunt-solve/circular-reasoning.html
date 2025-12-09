@@ -28,6 +28,29 @@
     <script src="../static/js/time.e16f93f2f0b2.js"></script>
     <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="../static/images/fav-logo.5858f2e05ff7.ico" type="image/vnd.microsoft.icon">
     
+<script>
+    function genHash(string) {
+        let hash = 0;
+        for (const char of string) {
+            hash = (hash << 5) - hash + char.charCodeAt(0);
+            hash |= 0; // Constrain to 32bit integer
+        }
+        return hash;
+    };
+
+    function checkAnswer() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const answer = urlParams.get('answer');
+        if(answer!==null){
+            textAns = answer.toUpperCase().replace(/[^A-Z]+/g, '');
+            if(genHash(textAns)===66898262)
+                document.getElementById("answer-line").innerHTML = "Solved! <span class=\"solved-title-answer\">"+textAns+"</span>";
+            else
+                document.getElementById("answer-line").innerHTML = "Incorrect!";
+        }
+    }
+</script>
+
 </head>
 <body>
     <a class="skip-to-main">Press enter to skip to main content.</a>
@@ -76,7 +99,7 @@
 
 <h1>
     Check: Circular Reasoning
-    
+    <div class="solved-title-marker" id="answer-line"></div>
 </h1>
 
 <main>
@@ -116,6 +139,7 @@ $('.delete-row').click(function(e) {
             skipToMainLink.href = `#${anchorId}`;
             mainContentElement.parentNode.insertBefore(mainContentAnchor, mainContentElement);
         }
+        checkAnswer();
     </script>
     <footer>
         Powered by <a href="https://github.com/galacticpuzzlehunt/gph-site">gph-site</a>
