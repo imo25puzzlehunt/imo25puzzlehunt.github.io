@@ -1,0 +1,141 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    
+<title>Solution: Decomposition</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="IMO 2025 Puzzle Hunt">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="../static/css/skeleton.f3406388ee80.css">
+    <link rel="stylesheet" href="../static/css/base.2e73f19f3835.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="../static/js/jsi18n.js"></script>
+    <script src="../static/js/jquery.formset.8584349c8b78.js"></script>
+    <script src="../static/js/sorttable.cc47c001d30b.js"></script>
+    <script src="../static/js/tray.e0fbe1fa0768.js"></script>
+    <script src="../static/js/notify.7898a6be1e40.js"></script>
+    <script src="../static/js/time.e16f93f2f0b2.js"></script>
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="../static/images/fav-logo.5858f2e05ff7.ico" type="image/vnd.microsoft.icon">
+    
+</head>
+<body>
+    <a class="skip-to-main">Press enter to skip to main content.</a>
+    <nav class="top-navbar">
+        <span class="tray">
+            <div class="top-tabs">
+                <div class="top-team-actions">
+                    
+                </div>
+                <div class="site-nav">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                    <a href="../instructions.html">
+                        Instructions
+                    </a>
+                    
+                    
+                    <a class="selected-tab" href="../puzzles.html">
+                        Puzzles
+                    </a>
+                    
+                    <a href="../teams.html">
+                        Teams
+                    </a>
+                    
+                    <a href="../wrapup.html">
+                        Wrap-Up
+                    </a>
+                    
+                </div>
+            </div>
+        </span>
+    </nav>
+    <script>
+    
+    </script>
+    
+    <div class="top-more-actions">
+        
+<a href="../puzzle/decomposition.html" class="btn">Back to the puzzle</a>
+
+    </div>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution: Decomposition
+    <div class="solved-title-marker">Answer: <span class="solved-title-answer spoiler">BAYESIAN</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Hadyn Tang (with inspiration from Norm Do and Ross Atkins)
+
+    </h2>
+
+    
+    <p>Firstly, we should figure out what the letter <strong>B</strong> is doing in the stack of cards. We can notice that the letters that are shaded are exactly the even numbers.
+Similarly, on the second card, out of the visible shaded cells, we can observe that the letters that are shaded are exactly the multiples of three.</p>
+<p>From this, we might be able to guess from this that the puzzle has something to do with factors, and in particular given the title of the puzzle, <em>Decomposition</em>,
+with the prime decomposition of each number, which contains only small primes for each number.</p>
+<p>If we were to shade in the numbers divisible by each prime in order &mdash; 2, 3, 5, 7, 11, 13, 17, 19 &mdash; letters appear, spelling the answer, <span class="solved-title-answer spoiler">BAYESIAN</span>.</p>
+<details><summary>
+        Click to show all of the cards with shaded numbers visible
+    </summary><br><img src="../static/solution_resources/decomposition_2fa959d9164ca9e2fe95656d24cfeb7.defd872804de.png" width="100%"></details>
+
+    
+    
+
+    
+    
+</main>
+
+
+    </div>
+    
+    <script>
+        const skipToMainLink = document.querySelector("a.skip-to-main");
+        const mainContentElement = document.getElementsByTagName("main")?.item(0) || document.querySelector("div.content");
+        if (skipToMainLink && mainContentElement) {
+            const mainContentAnchor = document.createElement("a");
+            const anchorId = "main-content-anchor"
+            mainContentAnchor.className = anchorId;
+            mainContentAnchor.id = anchorId;
+            skipToMainLink.href = `#${anchorId}`;
+            mainContentElement.parentNode.insertBefore(mainContentAnchor, mainContentElement);
+        }
+    </script>
+    <footer>
+        Powered by <a href="https://github.com/galacticpuzzlehunt/gph-site">gph-site</a>
+    </footer>
+</body>
+</html>

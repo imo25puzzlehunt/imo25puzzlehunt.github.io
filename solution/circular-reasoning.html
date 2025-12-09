@@ -1,0 +1,157 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    
+<title>Solution: Circular Reasoning</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="IMO 2025 Puzzle Hunt">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="../static/css/skeleton.f3406388ee80.css">
+    <link rel="stylesheet" href="../static/css/base.2e73f19f3835.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="../static/js/jsi18n.js"></script>
+    <script src="../static/js/jquery.formset.8584349c8b78.js"></script>
+    <script src="../static/js/sorttable.cc47c001d30b.js"></script>
+    <script src="../static/js/tray.e0fbe1fa0768.js"></script>
+    <script src="../static/js/notify.7898a6be1e40.js"></script>
+    <script src="../static/js/time.e16f93f2f0b2.js"></script>
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="../static/images/fav-logo.5858f2e05ff7.ico" type="image/vnd.microsoft.icon">
+    
+</head>
+<body>
+    <a class="skip-to-main">Press enter to skip to main content.</a>
+    <nav class="top-navbar">
+        <span class="tray">
+            <div class="top-tabs">
+                <div class="top-team-actions">
+                    
+                </div>
+                <div class="site-nav">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                    <a href="../instructions.html">
+                        Instructions
+                    </a>
+                    
+                    
+                    <a class="selected-tab" href="../puzzles.html">
+                        Puzzles
+                    </a>
+                    
+                    <a href="../teams.html">
+                        Teams
+                    </a>
+                    
+                    <a href="../wrapup.html">
+                        Wrap-Up
+                    </a>
+                    
+                </div>
+            </div>
+        </span>
+    </nav>
+    <script>
+    
+    </script>
+    
+    <div class="top-more-actions">
+        
+<a href="../puzzle/circular-reasoning.html" class="btn">Back to the puzzle</a>
+
+    </div>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution: Circular Reasoning
+    <div class="solved-title-marker">Answer: <span class="solved-title-answer spoiler">FINAL</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Hadyn Tang
+
+    </h2>
+
+    
+    <p>We are given an underspecified geometric diagram, with a rectangle and various points.
+Additionally, we have two five-letter words: <code>ADIOS</code> and <code>FROND</code>, which consist of five letters
+which are points in the diagram. By the diagram to the left of the words, and the puzzle title 
+<em>Circular Reasoning</em>, we might be able to guess that this has something to do with circles;
+indeed, checking with a compass or some other means would indicate that these pentagons are cyclic.</p>
+<p>Thus, given we also have a <code>?????</code> under our five-letter words, it makes sense that we want to
+identify another cyclic pentagon in the diagram. There are two different ways we could do this:
+either we look at the diagram and guess a cyclic pentagon (perhaps confirming by drawing a circle 
+with a compass), or by angle chasing on the diagram with the two given circles (which turns out to
+be a configuration related to the orthocentre; this has many known circles).</p>
+<p>Whatever the case, spotting the cyclic pentagon, and then reading it in clockwise order from
+the top as suggested by the arrow gives the answer 
+<span class="solved-title-answer spoiler">FINAL</span>.</p>
+<details><summary>
+        Click to show the diagram with circles included
+    </summary><br><img src="../static/solution_resources/circular-reasoning_a6c4a5452540d5fbe9c9ad73c24ecdb1.8724c3bae95b.png" width="100%"></details>
+<p><br></p>
+<h4>Author’s Note</h4>
+<p>There have been several hunt puzzles involving Olympiad-level geometry, such as 
+<a href="https://puzzles.mit.edu/2018/full/puzzle/x_marks_the_spot.html">
+    X Marks the Spot</a>, 
+but ideas are hard to come by. 
+Since we wanted a puzzle that would encourage students to use their compasses,
+this idea arose.</p>
+
+    
+    
+
+    
+    
+</main>
+
+
+    </div>
+    
+    <script>
+        const skipToMainLink = document.querySelector("a.skip-to-main");
+        const mainContentElement = document.getElementsByTagName("main")?.item(0) || document.querySelector("div.content");
+        if (skipToMainLink && mainContentElement) {
+            const mainContentAnchor = document.createElement("a");
+            const anchorId = "main-content-anchor"
+            mainContentAnchor.className = anchorId;
+            mainContentAnchor.id = anchorId;
+            skipToMainLink.href = `#${anchorId}`;
+            mainContentElement.parentNode.insertBefore(mainContentAnchor, mainContentElement);
+        }
+    </script>
+    <footer>
+        Powered by <a href="https://github.com/galacticpuzzlehunt/gph-site">gph-site</a>
+    </footer>
+</body>
+</html>
